@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="testApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular test Application</title>
+    <script src="angular.js"></script>
+    <script src="js/app.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="mainCtrl" ng-controller="testCtrl">
+    <input type="number" ng-model="id">
+    <input type="text" ng-model="name">
+    <input type="text" ng-model="group">
+    <button ng-click="add()">Add</button>
+    <table ts-wrapper>
+        <thead>
+        <tr>
+            <th><a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse"><span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>Number</a></th>
+            <th><a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse"><span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>Name</a></th>
+            <th><a href="#" ng-click="sortType = 'group'; sortReverse = !sortReverse"><span ng-show="sortType == 'group' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'group' && sortReverse" class="fa fa-caret-up"></span>Group</a></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="student in test | orderBy:sortType:sortReverse">
+            <td>{{student.id}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.group}}</td>
+            <td>
+                <a href="#" ng-click="remove(student.id)">X</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+</body>
+</html>
